@@ -1,7 +1,7 @@
 import pygame
 from pygame.examples.aliens import Player
 
-from entity import Entity
+from player import Player
 from screen import Screen
 from map import Map
 from keylistener import Keylistener
@@ -13,10 +13,11 @@ class Game:
         self.screen = Screen()
         self.map = Map(self.screen)
         self.keylistener = Keylistener()
-        self.entity = Entity(keylistener=self.keylistener)
-        self.map.add_player(self.entity)
+        self.player : Player = Player(self.keylistener, self.screen, 0, 0)
+        self.map.add_player(self.player)
 
     def run(self):
+        print('starting game')
         while self.running:
             self.handle_input()
             self.map.update()

@@ -7,12 +7,17 @@ class Screen:
         pygame.display.set_caption("Pokémon")
         self.clock = pygame.time.Clock()
         self.framerate = 60
+        self.deltatime : float = 0.0
 
     def update(self):
         pygame.display.flip()
         pygame.display.update()
         self.clock.tick(self.framerate)
         self.display.fill((0, 0, 0))
+        self.deltatime = self.clock.get_time()
+
+    def get_deltatime(self):
+        return self.deltatime
 
     def getsize(self):
         return self.display.get_size()
